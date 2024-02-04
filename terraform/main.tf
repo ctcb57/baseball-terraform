@@ -13,7 +13,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "data-lake-bucket" {
-  name     = var.gcs_bucket_name
+  name     = "${var.gcs_bucket_name}${var.environment}"
   location = var.location
 
   # Optional, but recommended settings:

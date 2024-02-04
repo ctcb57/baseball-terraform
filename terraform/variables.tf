@@ -29,3 +29,8 @@ variable "gcs_storage_class" {
   description = "Bucket Storage Class"
   default     = "STANDARD"
 }
+
+variable "environment" {
+    type = string
+    default = "dev"
+}
