@@ -32,5 +32,5 @@ variable "gcs_storage_class" {
 
 variable "environment" {
     type = string
-    default = "dev"
+    default = "-dev"
 }
