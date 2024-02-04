@@ -99,6 +99,9 @@ jobs:
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         TF_CLI_ARGS: '-var-file="env/dev.tfvars"'
+
+    - uses: actions/github-script@v6
+      if: github.event.pull_request.merged == true
       with:
         script: |
           const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
