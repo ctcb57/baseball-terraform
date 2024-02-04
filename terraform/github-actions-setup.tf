@@ -1,7 +1,7 @@
 locals {
   roles = [
     "roles/resourcemanager.projectIamAdmin", # GitHub Actions identity
-    "roles/editor", # allow to manage all resources
+    "roles/editor",                          # allow to manage all resources
   ]
   github_repository_name = "ctcb57/baseball-terraform" # e.g. yourname/yourrepo
 }
