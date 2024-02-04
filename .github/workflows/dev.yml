@@ -5,11 +5,11 @@ on:
     branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
-  types:
-    - opened # default
-    - synchronize # default
-    - reopened # default
-    - closed
+    types:
+      - opened # default
+      - synchronize # default
+      - reopened # default
+      - closed
 
 permissions:
   contents: read
