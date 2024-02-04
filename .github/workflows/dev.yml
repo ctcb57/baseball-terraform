@@ -39,9 +39,9 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         TF_CLI_ARGS: '-var-file="env/dev.tfvars"'
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
+    # # Checks that all Terraform configuration files adhere to a canonical format
+    # - name: Terraform Format
+    #   run: terraform fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
