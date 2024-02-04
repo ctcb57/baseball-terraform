@@ -3,13 +3,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
-    types:
-      - opened # default
-      - synchronize # default
-      - reopened # default
-      - closed
 
 permissions:
   contents: read
@@ -95,7 +88,6 @@ jobs:
     
     - name: Terraform Apply
       id: apply
-      if: github.event.pull_request.merged == true
       run: terraform apply -auto-approve -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
