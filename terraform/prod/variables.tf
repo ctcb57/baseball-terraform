@@ -34,3 +34,13 @@ variable "environment" {
   type    = string
   default = "-dev"
 }
+
+variable "is_prod" {
+  type    = bool
+  default = false
+}
+
+variable "is_dev" {
+  type    = bool
+  default = false
+}
