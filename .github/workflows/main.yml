@@ -3,13 +3,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branchs: [ "main" ]
-    types:
-      - opened # default
-      - synchronize # default
-      - reopened # default
-      - closed
 
 permissions:
   contents: read
@@ -26,7 +19,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./terraform
+        working-directory: ./terraform/prod
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -37,8 +30,8 @@ jobs:
       uses: google-github-actions/auth@v0.6.0
       with:
         create_credentials_file: 'true'
-        workload_identity_provider: 'projects/916297500838/locations/global/workloadIdentityPools/github/providers/github-provider'
-        service_account: 'github-actions@alien-sol-412801.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/916297500838/locations/global/workloadIdentityPools/github/providers/github-provider-prod'
+        service_account: 'github-actions-prod@alien-sol-412801.iam.gserviceaccount.com'
 
     - name: Terraform fmt
       id: fmt
@@ -93,7 +86,6 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       id: apply
-      if: github.event.pull_request.merged = true
       run: terraform apply -auto-approve -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
