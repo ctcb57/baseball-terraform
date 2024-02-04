@@ -11,7 +11,7 @@ resource "google_service_account" "github-actions-dev" {
   account_id   = "github-actions-dev"
   display_name = "github actions dev"
   description  = "Dev link to Workload Identity Pool used by GitHub Actions"
-  
+
 }
 
 # Allow to access all resources

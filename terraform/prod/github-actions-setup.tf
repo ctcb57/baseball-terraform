@@ -11,7 +11,7 @@ resource "google_service_account" "github-actions-prod" {
   account_id   = "github-actions-prod"
   display_name = "github actions prod"
   description  = "Prod link to Workload Identity Pool used by GitHub Actions"
-  
+
 }
 
 # Allow to access all resources
