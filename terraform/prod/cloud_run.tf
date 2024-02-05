@@ -92,7 +92,7 @@ resource "google_cloud_run_service" "run_service" {
       volumes {
         name = "secret-mage-secret"
         secret {
-          secret_name  = "mage_secret"
+          secret_name = "mage_secret"
           items {
             key  = "latest"
             path = "mage_secret"
