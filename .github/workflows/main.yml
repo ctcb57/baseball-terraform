@@ -101,7 +101,7 @@ jobs:
         gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev 
 
     - name: Build image
-      run: docker build . --file ./mage-baseball-pipelines/Dockerfile --tag ${{ env.GAR_LOCATION }}
+      run: docker build . --file ./Dockerfile --tag ${{ env.GAR_LOCATION }}
       working-directory: ./mage-baseball-pipelines
 
     - name: Push image
