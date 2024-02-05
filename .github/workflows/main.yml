@@ -60,7 +60,7 @@ jobs:
       run: terraform plan -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_CLI_ARGS: '-var-file="env/prod.tfvars" -var="database_password=${{ DB_PASSWORD }}"'
+        TF_CLI_ARGS: '-var-file="env/prod.tfvars" -var="database_password=${{ secrets.DB_PASSWORD }}"'
 
 
 
@@ -71,7 +71,7 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_CLI_ARGS: '-var-file="env/prod.tfvars" -var="database_password=${{ DB_PASSWORD }}"'
+        TF_CLI_ARGS: '-var-file="env/prod.tfvars" -var="database_password=${{ secrets.DB_PASSWORD }}"'
 
   build-and-deploy:
     name: Build, Publish, and Deploy
