@@ -85,7 +85,7 @@ resource "google_cloud_run_service" "run_service" {
           value = 16384
         }
         volume_mounts {
-          mount_path = "home/secrets/mage_secret.json"
+          mount_path = "/home/secrets"
           name       = "secret-mage-secret"
         }
       }
@@ -95,7 +95,7 @@ resource "google_cloud_run_service" "run_service" {
           secret_name = "mage_secret"
           items {
             key  = "latest"
-            path = "mage_secret"
+            path = "./mage_secret.json"
           }
         }
       }
