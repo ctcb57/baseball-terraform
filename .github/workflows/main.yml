@@ -102,7 +102,7 @@ jobs:
 
     - name: Build image
       run: docker build . --file ./mage-baseball-pipelines/Dockerfile --tag ${{ env.GAR_LOCATION }}
-      working-directory: ./
+      working-directory: ./mage-baseball-pipelines
 
     - name: Push image
       run: docker push ${{ env.GAR_LOCATION }}
