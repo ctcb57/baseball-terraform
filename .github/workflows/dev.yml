@@ -53,7 +53,7 @@ jobs:
       run: terraform plan -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_CLI_ARGS: '-var-file="env/dev.tfvars" -var="bg_dataset_name="baseball"'
+        TF_CLI_ARGS: '-var-file="env/dev.tfvars" -var="bg_dataset_name=baseball"'
 
 
     # - uses: actions/github-script@v6
@@ -91,7 +91,7 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env: 
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_CLI_ARGS: '-var-file="env/dev.tfvars" -var="bg_dataset_name="baseball"'
+        TF_CLI_ARGS: '-var-file="env/dev.tfvars" -var="bg_dataset_name=baseball"'
 
     # - uses: actions/github-script@v6
     #   if: github.event.pull_request.merged == true
