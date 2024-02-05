@@ -13,7 +13,7 @@ resource "google_compute_security_policy" "policy" {
     match {
       versioned_expr = "SRC_IPS_V1"
       config {
-        src_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
+        src_ip_ranges = ["*"]
       }
     }
     description = "Whitelist IP"
