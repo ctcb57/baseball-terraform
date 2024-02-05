@@ -30,9 +30,19 @@ variable "gcs_storage_class" {
   default     = "STANDARD"
 }
 
+variable "bg_dataset_name" {
+  description = "Bigquery dataset name"
+  default     = "test_dataset"
+}
+
 variable "environment" {
   type    = string
   default = "-dev"
+}
+
+variable "environment_underscore" {
+  type    = string
+  default = "_dev"
 }
 
 variable "is_prod" {
