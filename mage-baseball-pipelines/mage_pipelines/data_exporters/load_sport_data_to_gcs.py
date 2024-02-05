@@ -23,7 +23,7 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
-    bucket_name = 'baseball-project-charles-clark-1-dev'
+    bucket_name = 'baseball-project-charles-clark-1-prod'
     object_key = f'sports/sport_data_{current_date}.parquet'
 
     GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(

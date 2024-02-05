@@ -84,21 +84,21 @@ resource "google_cloud_run_service" "run_service" {
           name  = "ULIMIT_NO_FILE"
           value = 16384
         }
-        # volume_mounts {
-        #   mount_path = "/secrets/bigquery"
-        #   name       = "secret-bigquery-key"
-        # }
+        volume_mounts {
+          mount_path = "home/secrets/mage_secret.json"
+          name       = "secret-mage-secret"
+        }
       }
-      # volumes {
-      #   name = "secret-bigquery-key"
-      #   secret {
-      #     secret_name  = "bigquery_key"
-      #     items {
-      #       key  = "latest"
-      #       path = "bigquery_key"
-      #     }
-      #   }
-      # }
+      volumes {
+        name = "secret-mage-secret"
+        secret {
+          secret_name  = "mage_secret"
+          items {
+            key  = "latest"
+            path = "mage_secret"
+          }
+        }
+      }
     }
     metadata {
       annotations = {
