@@ -76,6 +76,9 @@ jobs:
   build-and-deploy:
     name: Build, Publish, and Deploy
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mage-baseball-pipelines
     steps:
     - name: Checkout
       uses: actions/checkout@master
@@ -98,7 +101,7 @@ jobs:
       run: |-
         docker build \
           --tag "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}" \
-          ./mage-baseball-pipelines
+          .
     
     - name: Docker push
       run: |-
