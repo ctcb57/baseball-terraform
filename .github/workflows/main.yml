@@ -7,7 +7,7 @@ on:
 env:
   GAR_LOCATION: us-central1
   GOOGLE_CLOUD_RUN_SERVICE_NAME: mage-baseball-pipelines
-  IMAGE: mageai/mageai:latest
+  IMAGE: mageai:latest
   PROJECT_ID: alien-sol-412801
   REPOSITORY: mage-baseball-pipelines
 
