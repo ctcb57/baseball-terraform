@@ -52,19 +52,36 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - load_sport_data_gcs_to_bq
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: load_sport_data_gcs
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks:
   - load_sport_data_to_gcs
   uuid: load_sport_data_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_sport_data_gcs_to_bq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_sport_data_gcs
+  uuid: load_sport_data_gcs_to_bq
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -86,7 +103,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-05 05:59:51'
+updated_at: '2024-02-08 01:21:17'
 uuid: mlb_sports
 variables_dir: /home/src/mage_data/mage_pipelines
 widgets: []

@@ -22,7 +22,7 @@ def load_from_google_cloud_storage(*args, **kwargs):
     config_profile = 'default'
 
     bucket_name = 'baseball-project-charles-clark-1-dev'
-    object_key = f'sports/sport_data_{current_date}.parquet'
+    object_key = f'sports/sport_data_2024-02-05.parquet'
     print(object_key)
     return GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
         bucket_name,
