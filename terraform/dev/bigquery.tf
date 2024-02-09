@@ -1,12 +1,11 @@
-module "bigquery" {
-  source     = "terraform-google-modules/bigquery/google"
-  version    = "~> 7.0"
-  dataset_id = "${var.bg_dataset_name}${var.environment_underscore}"
-  project_id = var.project
-  location   = "US"
+locals {
+  datasets = jsondecode(file("${path.module}/resource/datasets.json"))["datasets"]
 }
 
-resource "bg_dataset_name" "dev_dataset" {
-  dataset_id = "${var.bq_dataset_name}${var.environment_underscore}"
-  location   = var.location
+resource "google_bigquery_dataset" "datasets" {
+  for_each = local.datasets
+
+  project    = var.project
+  dataset_id = each.value["dataset_id"]
+  location   = "US"
 }

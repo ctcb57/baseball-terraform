@@ -1,0 +1,10 @@
+{
+  "datasets": {
+    "dataset1": {
+      "dataset_id": "mlb_dev"
+    }, 
+    "dataset2": {
+      "dataset_id": "fangraphs_dev"
+    }
+  }
+}
