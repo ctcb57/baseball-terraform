@@ -2,7 +2,6 @@ from mage_ai.settings.repo import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.google_cloud_storage import GoogleCloudStorage
 from os import path
-from datetime import datetime
 if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
 if 'test' not in globals():
@@ -17,22 +16,14 @@ def load_from_google_cloud_storage(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#googlecloudstorage
     """
-    current_date = datetime.now().strftime("%Y-%m-%d")
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
-    bucket_name = 'baseball-project-charles-clark-1-dev'
-    object_key = f'mlb/sports/sport_data_{current_date}.parquet'
-    print(object_key)
+    bucket_name = 'your_bucket_name'
+    object_key = 'your_object_key'
+
     return GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
         bucket_name,
         object_key,
     )
 
-
-# @test
-# def test_output(output, *args) -> None:
-#     """
-#     Template code for testing the output of the block.
-#     """
-#     assert output is not None, 'The output is undefined'
