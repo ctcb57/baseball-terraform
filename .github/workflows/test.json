@@ -1,0 +1,77 @@
+{
+  "gamePk": 718352,
+  "gameGuid": "b855e5b9-3ec3-4ffa-8fad-b34ecb738b70",
+  "link": "/api/v1.1/game/718352/feed/live",
+  "gameType": "R",
+  "season": "2023",
+  "gameDate": "2023-05-01T17:10:00Z",
+  "officialDate": "2023-05-01",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "F",
+    "detailedState": "Final",
+    "statusCode": "F",
+    "startTimeTBD": False,
+    "abstractGameCode": "F"
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 19,
+        "losses": 9,
+        "pct": ".679"
+      },
+      "score": 9,
+      "team": {
+        "id": 144,
+        "name": "Atlanta Braves",
+        "link": "/api/v1/teams/144"
+      },
+      "isWinner": True,
+      "splitSquad": False,
+      "seriesNumber": 9
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 15,
+        "losses": 13,
+        "pct": ".536"
+      },
+      "score": 8,
+      "team": {
+        "id": 121,
+        "name": "New York Mets",
+        "link": "/api/v1/teams/121"
+      },
+      "isWinner": False,
+      "splitSquad": False,
+      "seriesNumber": 9
+    }
+  },
+  "venue": {
+    "id": 3289,
+    "name": "Citi Field",
+    "link": "/api/v1/venues/3289"
+  },
+  "content": {
+    "link": "/api/v1/game/718352/content"
+  },
+  "isTie": False,
+  "gameNumber": 1,
+  "publicFacing": True,
+  "doubleHeader": "Y",
+  "gamedayType": "P",
+  "tiebreaker": "N",
+  "calendarEventID": "14-718352-2023-05-01",
+  "seasonDisplay": "2023",
+  "dayNight": "day",
+  "scheduledInnings": 9,
+  "reverseHomeAwayStatus": False,
+  "inningBreakLength": 120,
+  "gamesInSeries": 3,
+  "seriesGameNumber": 2,
+  "seriesDescription": "Regular Season",
+  "recordSource": "S",
+  "ifNecessary": "N",
+  "ifNecessaryDescription": "Normal Game"
+}
