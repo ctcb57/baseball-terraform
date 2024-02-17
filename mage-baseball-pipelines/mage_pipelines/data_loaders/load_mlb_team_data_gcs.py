@@ -22,8 +22,8 @@ def load_from_google_cloud_storage(*args, **kwargs):
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
-    bucket_name = 'baseball-project-charles-clark-1-dev'
-    object_key = f'mlb/teams/team_data_{current_year}.parquet'
+    bucket_name = 'mage-zoomcamp-charles-clark-1'
+    object_key = f'nyc_yellow_taxi_data/yellow_tripdata_2020-05.parquet'
 
     return GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
         bucket_name,

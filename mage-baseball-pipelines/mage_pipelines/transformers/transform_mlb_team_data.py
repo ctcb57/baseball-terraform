@@ -12,9 +12,9 @@ def transform(data, *args, **kwargs):
         'id': pd.Int64Dtype(),
         'season': pd.Int64Dtype(), 
         'parent_org_id': pd.Int64Dtype(), 
-        'venue_id': pd.Int64Dtype(), 
-        'league_id': pd.Int64Dtype(), 
-        'sport_id': pd.Int64Dtype()
+        'venue_id': pd.Int64Dtype()
+        # 'league_id': pd.Int64Dtype(), 
+        # 'sport_id': pd.Int64Dtype()
     }
     data = data.astype(team_dtypes)
     return data 
