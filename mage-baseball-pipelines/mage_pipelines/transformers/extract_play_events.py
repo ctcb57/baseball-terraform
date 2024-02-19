@@ -16,6 +16,11 @@ def transform(json_list, *args, **kwargs):
                 data = {
                     'game_pk': game.get('gamePk', None), 
                     'play_id': event.get('playId', None), 
+                    'at_bat_index': play.get('about', {}).get('atBatIndex', None), 
+                    'is_top_inning': play.get('about', {}).get('isTopInning', None), 
+                    'inning': play.get('about', {}).get('inning', None),
+                    'pitcher_bam_id': play.get('matchup', {}).get('pitcher', {}).get('id', None), 
+                    'batter_bam_id': play.get('matchup', {}).get('batter', {}).get('id', None),
                     'play_index': event.get('index', None), 
                     'pitch_number': event.get('pitchNumber', None), 
                     'start_time': event.get('startTime', None), 

@@ -76,7 +76,7 @@ blocks:
   language: python
   name: export_person_update_bq
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -85,7 +85,23 @@ blocks:
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
-conditionals: []
+conditionals:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_for_valid_person_update
+  retry_config: null
+  status: updated
+  timeout: null
+  type: conditional
+  upstream_blocks:
+  - transform_person_update
+  uuid: check_for_valid_person_update
 created_at: '2024-02-17 19:27:06.494881+00:00'
 data_integration: null
 description: null

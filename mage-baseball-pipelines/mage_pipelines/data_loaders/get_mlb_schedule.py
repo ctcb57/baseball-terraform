@@ -12,7 +12,6 @@ if 'test' not in globals():
 def load_data(*args, **kwargs):
     previous_date = str((kwargs.get('execution_date') - timedelta(days=1)).date())
     # Remove this when ready to merge
-    # previous_date = '2023-05-01'
     url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={previous_date}"
     schedule_json = requests.get(url).json()
     games_data_list = []

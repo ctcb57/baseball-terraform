@@ -45,7 +45,8 @@ def transform(json_list, *args, **kwargs):
                 'pitcher_link': play.get('matchup', {}).get('pitcher', {}).get('link', None), 
                 'pitcher_handedness_code': play.get('matchup', {}).get('pitchHand', {}).get('code', None), 
                 'pitcher_handedness_desc': play.get('matchup', {}).get('pitchHand', {}).get('description', None), 
-                'number_of_play_events': len(play.get('playEvents', []))
+                'number_of_play_events': len(play.get('playEvents', [])), 
+                'created_date': kwargs.get('execution_date')
             }
             plays.append(data)
     

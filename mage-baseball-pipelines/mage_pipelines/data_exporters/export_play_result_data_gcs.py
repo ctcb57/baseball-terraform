@@ -18,10 +18,6 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> str:
     Docs: https://docs.mage.ai/design/data-loading#googlecloudstorage
     """
     previous_date = str((kwargs.get('execution_date') - timedelta(days=1)).date())
-    previous_date = '2023-04-01'
-
-    # Remove this when ready to merge
-    # previous_date = '2023-05-01'
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 

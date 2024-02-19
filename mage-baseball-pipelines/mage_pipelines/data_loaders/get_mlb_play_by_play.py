@@ -10,7 +10,6 @@ if 'test' not in globals():
 def load_data(*args, **kwargs):
     # Get Games
     previous_date = str((kwargs.get('execution_date') - timedelta(days=1)).date())
-    previous_date = '2023-04-01'
     games_url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={previous_date}"
     games_json = requests.get(games_url).json()
     game_json_list = []

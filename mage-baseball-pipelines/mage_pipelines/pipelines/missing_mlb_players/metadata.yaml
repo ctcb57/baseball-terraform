@@ -3,69 +3,69 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - transform_roster_data
+  - get_missing_person_data
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: get_mlb_roster_data
+  name: get_missing_players
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: get_mlb_roster_data
+  uuid: get_missing_players
 - all_upstream_blocks_executed: true
-  color: null
+  color: blue
   configuration: {}
   downstream_blocks:
-  - export_roster_date_gcs
+  - export_missing_person_gcs
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: transform_roster_data
+  name: get_missing_person_data
   retry_config: null
   status: executed
   timeout: null
-  type: transformer
+  type: custom
   upstream_blocks:
-  - get_mlb_roster_data
-  uuid: transform_roster_data
+  - get_missing_players
+  uuid: get_missing_person_data
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
-  - load_mlb_roster_gcs
+  - get_missing_person_gcs
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: export_roster_date_gcs
+  name: export_missing_person_gcs
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - transform_roster_data
-  uuid: export_roster_date_gcs
+  - get_missing_person_data
+  uuid: export_missing_person_gcs
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
-  - export_roster_bq
+  - export_missing_person_bq
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: load_mlb_roster_gcs
+  name: get_missing_person_gcs
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks:
-  - export_roster_date_gcs
-  uuid: load_mlb_roster_gcs
+  - export_missing_person_gcs
+  uuid: get_missing_person_gcs
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -74,42 +74,26 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: export_roster_bq
+  name: export_missing_person_bq
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - load_mlb_roster_gcs
-  uuid: export_roster_bq
+  - get_missing_person_gcs
+  uuid: export_missing_person_bq
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
-conditionals:
-- all_upstream_blocks_executed: true
-  color: null
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: check_valid_roster_data
-  retry_config: null
-  status: updated
-  timeout: null
-  type: conditional
-  upstream_blocks:
-  - transform_roster_data
-  uuid: check_valid_roster_data
-created_at: '2024-02-10 23:55:36.554133+00:00'
+conditionals: []
+created_at: '2024-02-19 00:08:08.258429+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: mlb_roster_by_date
+name: missing_mlb_players
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -119,6 +103,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: mlb_roster_by_date
+uuid: missing_mlb_players
 variables_dir: /home/src/mage_data/mage_pipelines
 widgets: []

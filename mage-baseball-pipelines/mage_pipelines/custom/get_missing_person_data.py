@@ -1,22 +1,22 @@
-import pandas as pd
-from datetime import timedelta
+import pandas as pd 
 import requests
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+if 'custom' not in globals():
+    from mage_ai.data_preparation.decorators import custom
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
-@data_loader
-def load_data(*args, **kwargs):
-    execution_prev_date = kwargs.get('execution_date') - timedelta(days=1)
-    prev_date_str = str(execution_prev_date.date())
-    prev_date_str = '2024-01-01'
-    url = f"https://statsapi.mlb.com/api/v1/people/changes?updatedSince={prev_date_str}"   
-    person_json = requests.get(url).json()
-    players = []
-    for person in person_json['people']:
-        person_data = {
+@custom
+def transform_custom(person_list: list, *args, **kwargs):
+    base_url = "https://statsapi.mlb.com/api/v1/people"
+    player_id_list = [str(x['bam_id']) for x in person_list]
+    player_ids_str = ','.join(player_id_list)
+    url = f"{base_url}?personIds={player_ids_str}"
+    print(f"Loading data for {len(person_list)} players")
+    players_json = requests.get(url).json()
+    players_to_load = []
+    for person in players_json['people']:
+        data = {
             "mlb_bam_id": person.get('id', None), 
             "full_name": person.get('fullName', None), 
             "link": person.get('link', None), 
@@ -40,7 +40,7 @@ def load_data(*args, **kwargs):
             "middle_name": person.get('middleName', None), 
             "boxscoreName": person.get('boxscoreName', None), 
             "nickname": person.get('nickName', None), 
-            "gender": person.get('gender', None), 
+            "gender": person.get('gender', None),
             "is_player": person.get('isPlayer', None), 
             "is_verified": person.get('isVerified', None), 
             "draft_year": person.get('draftYear', None), 
@@ -59,10 +59,11 @@ def load_data(*args, **kwargs):
             "full_lfm_name": person.get('fullLFMName', None), 
             "strike_zone_top": person.get('strikeZoneTop', None), 
             "strike_zone_bottom": person.get('strikeZoneBottom', None), 
-            "update_date": execution_prev_date, 
+            "update_date": kwargs.get('execution_date'), 
             "created_date": kwargs.get('execution_date')
         }
-        players.append(person_data)
+        players_to_load.append(data)
     
-    df = pd.DataFrame(players)
+    print("Successful retrieved all missing players from API")
+    df = pd.DataFrame(players_to_load)
     return df 
