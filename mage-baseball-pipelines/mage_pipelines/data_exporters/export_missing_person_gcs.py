@@ -21,7 +21,7 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> str:
     config_profile = 'default'
 
     bucket_name = 'baseball-project-charles-clark-1-dev'
-    object_key = f'mlb/person/person/missing_players_{current_date}_r2.parquet'
+    object_key = f'mlb/person/person/missing_players_{current_date}.parquet'
 
     GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(
         df,
