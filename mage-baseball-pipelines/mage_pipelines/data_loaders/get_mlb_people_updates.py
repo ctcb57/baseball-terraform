@@ -11,7 +11,6 @@ if 'test' not in globals():
 def load_data(*args, **kwargs):
     execution_prev_date = kwargs.get('execution_date') - timedelta(days=1)
     prev_date_str = str(execution_prev_date.date())
-    prev_date_str = '2024-01-01'
     url = f"https://statsapi.mlb.com/api/v1/people/changes?updatedSince={prev_date_str}"   
     person_json = requests.get(url).json()
     players = []
